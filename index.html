@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Todo App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo App</h1>
+        <div class="input-container">
+            <input type="text" id="task-input" placeholder="Enter Your Task....">
+            <div class="date-picker">
+                <span class="calendar-icon" id="calendar-icon">📅</span>
+                <input type="date" id="task-date" class="hidden">
+            </div>
+            <button id="add-task-btn">+</button>
+        </div>
+        <div id="task-list"></div>
+        <div id="footer">
+            <p id="pending-task">You Have 0 Pending Task.</p>
+            <button id="clear-all-btn">Clear All</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

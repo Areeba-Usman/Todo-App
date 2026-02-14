@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap');
+
+:root {
+    --gradient: linear-gradient(135deg, #ef893b, #e72c3c);
+    --gradient-hover: linear-gradient(135deg, #e72c3c, #ef893b);
+    --bg-dark: rgba(44, 48, 54, 0.95);
+    --bg-darker: rgba(19, 24, 39, 0.7);
+    --bg-input: #363a41;
+    --text-light: #94a3b8;
+    --text-white: #f8fafc;
+    --border-orange: #ef893b;
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(239, 137, 59, 0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(231, 44, 60, 0.2) 0px, transparent 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    padding: 30px;
+    background: linear-gradient(145deg, #2c3036, #1e1e2e);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+input {
+    padding: 14px 16px;
+    border-radius: 12px;
+    background-color: var(--bg-input);
+    border: 1px solid #4a4f58;
+    color: var(--text-white);
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--border-orange);
+    box-shadow: 0 0 0 4px rgba(239, 137, 59, 0.15);
+    background: #3d424a;
+}
+
+input[type="text"] {
+    flex: 2;
+    min-width: 200px;
+}
+
+.date-picker {
+    width: 48px;
+    height: 48px;
+    background: var(--bg-input);
+    border-radius: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #4a4f58;
+    transition: all 0.2s;
+}
+
+.date-picker:hover {
+    border-color: var(--border-orange);
+}
+
+#task-date {
+    opacity: 0;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#add-task-btn {
+    padding: 12px 25px;
+    border: none;
+    background: var(--gradient);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(231, 44, 60, 0.3);
+}
+
+#add-task-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px -5px rgba(231, 44, 60, 0.4);
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+#task-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-darker);
+    border: 1px solid var(--glass-border);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    flex-wrap: nowrap; 
+}
+
+#task-list li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+    border-color: rgba(239, 137, 59, 0.4);
+}
+
+li.editing .edit-btn,
+li.editing .delete-btn {
+    display: none !important;
+}
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--border-orange);
+    flex-shrink: 0;
+}
+
+.task-text {
+    flex: 1;
+    color: #e2e8f0;
+    text-align: left;
+    font-size: 16px;
+    word-break: break-word;
+    min-width: 0; 
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #64748b;
+    opacity: 0.6;
+}
+
+.daysLeft {
+    font-size: 13px;
+    padding: 4px 10px;
+    background: rgba(239, 137, 59, 0.1);
+    border-radius: 20px; 
+    color: var(--border-orange);
+    font-weight: 600;
+    white-space: nowrap; 
+    flex-shrink: 0;
+}
+
+.li-buttons {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.delete-btn,
+.edit-btn,
+.save-btn,
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-size: 16px;
+}
+
+.edit-btn:hover {
+    background: rgba(239, 137, 59, 0.2);
+}
+
+.delete-btn:hover {
+    background: rgba(231, 44, 60, 0.2);
+}
+
+.edit-input,
+.edit-date {
+    padding: 8px 12px;
+    background: var(--bg-input);
+    color: white;
+    border: 1px solid var(--border-orange);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.edit-input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.edit-date {
+    width: 140px;
+    background: var(--bg-input);
+    color-scheme: dark;
+}
+
+.save-btn {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+}
+.cancel-btn {
+    background: rgba(231, 44, 60, 0.1);
+    color: #e74c3c;
+}
+.save-btn:hover {
+    background: rgba(46, 204, 113, 0.3);
+}
+.cancel-btn:hover {
+    background: rgba(231, 44, 60, 0.3);
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#footer p {
+    color: #b08652;
+    font-style: italic;
+}
+
+#clear-all-btn {
+    padding: 10px 20px;
+    background: transparent;
+    color: #e72c3c;
+    border: 1px solid #e72c3c;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#clear-all-btn:hover {
+    background: #e72c3c;
+    color: white;
+}
+
+#task-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+#task-list::-webkit-scrollbar-thumb {
+    background: var(--border-orange);
+    border-radius: 10px;
+}
